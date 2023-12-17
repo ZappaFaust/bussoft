@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Table.css'; // Import CSS file for styling
 
 const Table = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
   const tableData = [
     {
       sl: '',
@@ -21,46 +23,73 @@ const Table = () => {
     // Add more objects as needed...
   ];
 
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+  };
+
   return (
     <div>
-      <h2>Table</h2>
-      <table className="custom-table">
-        <thead>
-          <tr>
-            <th>SL</th>
-            <th>Order Date/Expected Delivery</th>
-            <th>Style/LPD PO No.</th>
-            <th>PI No./Bill No.</th>
-            <th>Company/Buyer</th>
-            <th>Team</th>
-            <th>Items</th>
-            <th>Style/PO No.</th>
-            <th>Spec.</th>
-            <th>Measurement</th>
-            <th>Ord. Qty</th>
-            <th>SqrMt/Lbs/Pcs</th>
-            {/* Add more headers for additional columns */}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].sl} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].orderDate} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].style} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].piNo} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].company} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].team} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].items} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].stylePO} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].spec} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].measurement} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].ordQty} /></td>
-            <td><input className="small-input" type="text" defaultValue={tableData[0].sqrMtLbsPcs} /></td>
-            {/* Add more input fields for additional columns */}
-          </tr>
-          {/* Add more rows by mapping through tableData array */}
-        </tbody>
-      </table>
+      <div className="dropdown-menu">
+        <select onChange={(e) => handleOptionChange(e.target.value)}>
+          <option value="">Select Option</option>
+          <option value="manageData">Manage Data</option>
+          <option value="managePoly">Manage Poly</option>
+        </select>
+      </div>
+
+      <h2>{selectedOption === 'manageData' ? 'Manage Data' : 'Manage Poly'}</h2>
+
+      {selectedOption === 'manageData' && (
+        <div>
+          <h3>Manage Data</h3>
+          <table className="custom-table">
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Order Date/Expected Delivery</th>
+                <th>Style/LPD PO No.</th>
+                {/* Add more table headers */}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index}>
+                  <td><input className="small-input" type="text" defaultValue={row.sl} /></td>
+                  <td><input className="small-input" type="text" defaultValue={row.orderDate} /></td>
+                  <td><input className="small-input" type="text" defaultValue={row.style} /></td>
+                  {/* Add more input fields based on the tableData fields */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {selectedOption === 'managePoly' && (
+        <div>
+          <h3>Manage Poly</h3>
+          <table className="custom-table">
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Order Date/Expected Delivery</th>
+                <th>Style/LPD PO No.</th>
+                {/* Add more table headers */}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index}>
+                  <td><input className="small-input" type="text" defaultValue={row.sl} /></td>
+                  <td><input className="small-input" type="text" defaultValue={row.orderDate} /></td>
+                  <td><input className="small-input" type="text" defaultValue={row.style} /></td>
+                  {/* Add more input fields based on the tableData fields */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
