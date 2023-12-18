@@ -1,4 +1,71 @@
 .small-input {
-  width: 80px; /* Adjust the width as needed */
-  /* Add any additional styling here */
+  width: 70px; /* Adjust the width as needed */
 }
+
+.medium-input {
+  width: 150px; /* Adjust the width as needed */
+}
+
+.custom-table {
+  border-collapse: collapse;
+  width: 100px;
+  display: inline;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #000;
+  padding: 4px; /* Reduced padding for smaller cells */
+  
+}
+
+.custom-table th {
+  background-color: aquamarine; /* Header background color */
+  color: #333; /* Header text color */
+  
+}
+
+/* Alternate row background color */
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.small-input {
+  width: 150px; /* Adjust width as needed */
+  height: 24px; /* Adjust height as needed */
+  box-sizing: border-box;
+  padding: 4px;
+  font-size: 12px; /* Adjust font size as needed */
+}
+
+.form-section{
+  position: absolute;
+  display: inline-block;
+  right: 20px;
+  top: 10px;
+}
+
+.tablez{
+  display: inline-block;
+  position: absolute;
+  left: 294px;
+}
+
+.form-section {
+  border: 1px solid #ccc;
+  padding: 30px;
+  width: 300px; /* Adjust width as needed */
+  margin: 0 auto; /* Centers the container */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a shadow effect */
+  text-align: left;
+}
+
+input {
+  padding: 5px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Border color and width */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  display: block;
+}
+
